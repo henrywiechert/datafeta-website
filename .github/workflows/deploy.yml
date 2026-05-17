@@ -12,7 +12,8 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master, main]
+  workflow_dispatch:  # also allow manual trigger from GitHub Actions UI
 
 jobs:
   build-and-deploy:
