@@ -28,8 +28,8 @@ const screenshots = [
 		<!-- Hero -->
 		<section class="hero">
 			<img src="/logo192.png" alt="DataSlicer logo" class="hero-logo" />
-			<h1>Data<span>Slicer</span> <span class="brand">by <strong>datafeta</strong></span></h1>
-			<p class="hero-tagline">Explorative Data Analysis For Engineers. (No Fancy Dashboards).</p>
+			<h1>Data<span>Slicer</span> <span class="divider">|</span> <span class="brand">by <strong>datafeta</strong></span></h1>
+			<p class="hero-tagline">Explorative Data Analysis For Engineers -<span class="tagline-sub"> No Fancy BI-Dashboards</span></p>
 			<p class="hero-sub">
 				Open-source OLAP-style data analysis in your browser.<br />
 				Connect to ClickHouse, DuckDB, Kaggle, or CSV/Parquet files and explore your data interactively.
@@ -108,31 +108,23 @@ const screenshots = [
 			</div>
 		</section>
 
-		<!-- Chart types -->
+		<!-- Feature list -->
 		<section class="section section-alt">
-			<h2>Chart types</h2>
-			<div class="chart-types">
-				<div class="chart-group">
-					<h3>Available now</h3>
-					<ul>
-						<li>Bar &amp; grouped bar</li>
-						<li>Line</li>
-						<li>Scatter</li>
-						<li>Tick-strip / Box-plot</li>
-						<li>Pie</li>
-						<li>Heatmap</li>
-						<li>CDF / distribution</li>
-						<li>Gantt</li>
-					</ul>
-				</div>
-				<div class="chart-group coming-soon">
-					<h3>Coming soon</h3>
-					<ul>
-						<li>Geo / map charts</li>
-						<li>Pivot table</li>
-					</ul>
-				</div>
-			</div>
+			<h2>Features</h2>
+			<ul class="feature-list">
+				<li>Bar, line, scatter, area, pie charts</li>
+				<li>Heatmap, CDF / distribution, Gantt, tick-strip / box-plot</li>
+				<li>Geo / map charts <span class="soon">coming soon</span></li>
+				<li>Pivot table <span class="soon">coming soon</span></li>
+				<li>Faceted views &amp; small multiples</li>
+				<li>Color, size and shape encodings</li>
+				<li>Filters with interactive cross-filtering</li>
+				<li>Linear regression &amp; density overlays</li>
+				<li>Multi-tab sessions with isolated state</li>
+				<li>Connect to ClickHouse, DuckDB, CSV, Parquet, Kaggle</li>
+				<li>DuckDB WASM result cache in the browser</li>
+				<li>Self-hostable, AGPL licensed</li>
+			</ul>
 		</section>
 
 		<!-- How it works -->
@@ -165,6 +157,19 @@ const screenshots = [
 			<p>DataSlicer is free to use and open source under the AGPL license.<br />
 			Self-host it, contribute, or just experiment with the hosted version.</p>
 			<a class="cta-secondary" href="https://github.com/henrywiechert/data-slicer">View on GitHub →</a>
+		</section>
+
+		<!-- Tech stack -->
+		<section class="section tech-stack">
+			<h2>Built on</h2>
+			<div class="tech-list">
+				<a href="https://observablehq.com/plot/" target="_blank" rel="noopener">Observable Plot</a>
+				<a href="https://react.dev" target="_blank" rel="noopener">React 18</a>
+				<a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener">FastAPI</a>
+				<a href="https://pypika.readthedocs.io" target="_blank" rel="noopener">PyPika</a>
+				<a href="https://duckdb.org" target="_blank" rel="noopener">DuckDB WASM</a>
+				<a href="https://arrow.apache.org" target="_blank" rel="noopener">Apache Arrow</a>
+			</div>
 		</section>
 
 		<footer>
@@ -255,13 +260,17 @@ const screenshots = [
 	h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
 	h1 span { color: #4f8ef7; }
 	h1 .brand { font-size: 1.1rem; font-weight: 400; color: #6b7280; vertical-align: middle; }
+	h1 .divider { font-weight: 200; color: #374151; }
 	.hero-tagline {
-		font-size: 1rem;
+		font-size: 1.25rem;
 		font-weight: 600;
 		color: #4f8ef7;
 		letter-spacing: 0.03em;
 		text-transform: uppercase;
 		margin-bottom: 1rem;
+	}
+	.tagline-sub {
+		font-weight: 400;
 	}
 	.hero-sub {
 		font-size: 1.2rem;
@@ -431,19 +440,49 @@ const screenshots = [
 	.feature-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
 	.feature-card p { color: #9ca3af; font-size: 0.95rem; }
 
-	/* Chart types */
-	.chart-types {
-		display: flex;
-		gap: 3rem;
-		justify-content: center;
-		flex-wrap: wrap;
+	/* Feature list */
+	.feature-list {
+		list-style: none;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 0.5rem 2rem;
+		text-align: left;
+		max-width: 860px;
+		margin: 0 auto;
 	}
-	.chart-group { text-align: left; min-width: 160px; }
-	.chart-group ul { list-style: none; margin-top: 0.75rem; }
-	.chart-group li { padding: 0.25rem 0; color: #9ca3af; font-size: 0.95rem; }
-	.chart-group li::before { content: "✓  "; color: #4f8ef7; }
-	.coming-soon li::before { content: "◦  "; color: #4b5563; }
-	.coming-soon h3 { color: #6b7280; }
+	.feature-list li {
+		color: #9ca3af;
+		font-size: 0.95rem;
+		padding: 0.35rem 0;
+		border-bottom: 1px solid #1f2537;
+	}
+	.feature-list li::before { content: "✓  "; color: #4f8ef7; }
+	.soon {
+		font-size: 0.8rem;
+		color: #4b5563;
+		margin-left: 0.4rem;
+	}
+
+	/* Tech stack */
+	.tech-stack { border-top: 1px solid #1f2537; }
+	.tech-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
+		justify-content: center;
+	}
+	.tech-list a {
+		color: #6b7280;
+		text-decoration: none;
+		font-size: 0.9rem;
+		border: 1px solid #1f2537;
+		border-radius: 4px;
+		padding: 0.3rem 0.75rem;
+		transition: color 0.15s, border-color 0.15s;
+	}
+	.tech-list a:hover { color: #e8eaf0; border-color: #374151; }
+
+	/* Chart types — removed */
 
 	/* Steps */
 	.steps {
