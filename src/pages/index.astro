@@ -29,6 +29,7 @@ const screenshots = [
 		<section class="hero">
 			<img src="/logo192.png" alt="DataSlicer logo" class="hero-logo" />
 			<h1>Data<span>Slicer</span></h1>
+			<p class="hero-tagline">Data Analysis For Engineers. Efficient Data Exploration (Not Fancy Dashboards).</p>
 			<p class="hero-sub">
 				Open-source OLAP-style data analysis in your browser.<br />
 				Connect to ClickHouse, DuckDB, Kaggle, or CSV/Parquet files and explore your data interactively.
@@ -242,8 +243,16 @@ const screenshots = [
 		height: 80px;
 		margin-bottom: 1.5rem;
 	}
-	h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+	h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
 	h1 span { color: #4f8ef7; }
+	.hero-tagline {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #4f8ef7;
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+		margin-bottom: 1rem;
+	}
 	.hero-sub {
 		font-size: 1.2rem;
 		color: #9ca3af;
