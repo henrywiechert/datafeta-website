@@ -1,0 +1,450 @@
+---
+const screenshots = [
+	{ src: "/screenshots/screenshot-1.png", alt: "Scatter plot with facets — penguins dataset" },
+	{ src: "/screenshots/screenshot-2.png", alt: "Faceted bar chart — penguins dataset" },
+	// { src: "/screenshots/screenshot-3.png", alt: "" },
+	// { src: "/screenshots/screenshot-4.png", alt: "" },
+];
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<title>DataSlicer — OLAP-in-browser data analysis</title>
+		<meta name="description" content="Open-source OLAP-style data analysis in your browser. Connect to ClickHouse, DuckDB, and CSV files." />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/logo192.png" />
+	</head>
+	<body>
+
+		<!-- WIP Banner -->
+		<div class="wip-banner">
+			🚧 Early stage — work in progress. Expect rough edges.
+		</div>
+
+		<!-- Hero -->
+		<section class="hero">
+			<img src="/logo192.png" alt="DataSlicer logo" class="hero-logo" />
+			<h1>Data<span>Slicer</span></h1>
+			<p class="hero-sub">
+				Open-source OLAP-style data analysis in your browser.<br />
+				Connect to ClickHouse, DuckDB, Kaggle, or CSV/Parquet files and explore your data interactively.
+			</p>
+			<div class="hero-ctas">
+				<a class="cta-primary" href="https://app.datafeta.io">Open the app →</a>
+				<a class="cta-secondary" href="https://github.com/henrywiechert/data-slicer">GitHub</a>
+			</div>
+		</section>
+
+		<!-- Screenshots card stack -->
+		<section class="stack-section">
+			<div class="stack-wrapper">
+				<div class="card-stack" id="card-stack" title="Click to cycle">
+					{screenshots.length > 0 ? (
+						[...screenshots].reverse().map((s, i) => (
+							<img
+								src={s.src}
+								alt={s.alt}
+								class={`stack-card card-${screenshots.length - 1 - i}`}
+							/>
+						))
+					) : (
+						<>
+							<div class="stack-card placeholder card-3">Screenshot 4</div>
+							<div class="stack-card placeholder card-2">Screenshot 3</div>
+							<div class="stack-card placeholder card-1">Screenshot 2</div>
+							<div class="stack-card placeholder card-0">Screenshot 1</div>
+						</>
+					)}
+				</div>
+				<button class="expand-btn" id="expand-btn" title="View full size" aria-label="View full size">⤢</button>
+			</div>
+			<p class="stack-hint">Click image to cycle · ⤢ to enlarge</p>
+		</section>
+
+		<!-- Lightbox -->
+		<dialog id="lightbox" class="lightbox">
+			<button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+			<img id="lightbox-img" src="" alt="" class="lightbox-img" />
+		</dialog>
+
+		<!-- Features -->
+		<section class="section">
+			<h2>What it does</h2>
+			<div class="features">
+				<div class="feature-card">
+					<div class="feature-icon">🔌</div>
+					<h3>Connect your data</h3>
+					<p>Works with ClickHouse, DuckDB, Kaggle, CSV and Parquet files. More connectors planned.</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🧮</div>
+					<h3>OLAP-style exploration</h3>
+					<p>Drag dimensions and measures to build charts and aggregations without writing SQL.</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">⚡</div>
+					<h3>Fast re-queries</h3>
+					<p>Query results are cached in DuckDB running in your browser, so interactive exploration stays snappy.</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🔓</div>
+					<h3>Open source</h3>
+					<p>AGPL licensed. Self-hostable. No usage tracking, no data leaves your infrastructure.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Chart types -->
+		<section class="section section-alt">
+			<h2>Chart types</h2>
+			<div class="chart-types">
+				<div class="chart-group">
+					<h3>Available now</h3>
+					<ul>
+						<li>Bar &amp; grouped bar</li>
+						<li>Line</li>
+						<li>Scatter</li>
+						<li>Tick-strip / Box-plot</li>
+						<li>Pie</li>
+						<li>Heatmap</li>
+						<li>CDF / distribution</li>
+						<li>Gantt</li>
+					</ul>
+				</div>
+				<div class="chart-group coming-soon">
+					<h3>Coming soon</h3>
+					<ul>
+						<li>Geo / map charts</li>
+						<li>Pivot table</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- How it works -->
+		<section class="section">
+			<h2>How it works</h2>
+			<div class="steps">
+				<div class="step">
+					<div class="step-num">1</div>
+					<h3>Connect</h3>
+					<p>Point DataSlicer at your ClickHouse instance, DuckDB file, or upload a CSV/Parquet.</p>
+				</div>
+				<div class="step-arrow">→</div>
+				<div class="step">
+					<div class="step-num">2</div>
+					<h3>Explore</h3>
+					<p>Drag fields onto axes, apply filters, chart type auto-detect ar manual.</p>
+				</div>
+				<div class="step-arrow">→</div>
+				<div class="step">
+					<div class="step-num">3</div>
+					<h3>Iterate</h3>
+					<p>Results cache locally so subsequent queries are near-instant.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Open source callout -->
+		<section class="section oss-callout">
+			<h2>Free &amp; open source</h2>
+			<p>DataSlicer is free to use and open source under the AGPL license.<br />
+			Self-host it, contribute, or just experiment with the hosted version.</p>
+			<a class="cta-secondary" href="https://github.com/henrywiechert/data-slicer">View on GitHub →</a>
+		</section>
+
+		<footer>
+			© 2026 Henry Wiechert ·
+			<a href="https://github.com/henrywiechert/data-slicer">GitHub</a> ·
+			<a href="https://github.com/henrywiechert/data-slicer/blob/master/LICENSE">AGPL License</a>
+		</footer>
+
+	</body>
+</html>
+
+<script>
+	function getFrontCard(stack: HTMLElement): HTMLElement | null {
+		return (Array.from(stack.children) as HTMLElement[]).find(c => /card-0/.test(c.className)) ?? null;
+	}
+
+	// Cycle stack on click
+	const stack = document.getElementById('card-stack') as HTMLElement | null;
+	if (stack) {
+		stack.addEventListener('click', () => {
+			const cards = Array.from(stack.children) as HTMLElement[];
+			const maxIdx = cards.length - 1;
+			cards.forEach(card => {
+				const match = card.className.match(/card-(\d+)/);
+				if (!match) return;
+				const idx = parseInt(match[1]);
+				const next = idx === 0 ? maxIdx : idx - 1;
+				card.className = card.className.replace(/card-\d+/, `card-${next}`);
+			});
+		});
+	}
+
+	// Lightbox
+	const expandBtn = document.getElementById('expand-btn');
+	const lightbox  = document.getElementById('lightbox') as HTMLDialogElement | null;
+	const lbImg     = document.getElementById('lightbox-img') as HTMLImageElement | null;
+	const lbClose   = document.getElementById('lightbox-close');
+
+	function openLightbox() {
+		if (!stack || !lightbox || !lbImg) return;
+		const front = getFrontCard(stack);
+		if (!front) return;
+		const src = (front as HTMLImageElement).src ?? '';
+		const alt = (front as HTMLImageElement).alt ?? '';
+		if (!src) return;
+		lbImg.src = src;
+		lbImg.alt = alt;
+		lightbox.showModal();
+	}
+
+	expandBtn?.addEventListener('click', (e) => { e.stopPropagation(); openLightbox(); });
+	lbClose?.addEventListener('click', () => lightbox?.close());
+	lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.close(); });
+</script>
+
+<style>
+	*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+	body {
+		font-family: system-ui, -apple-system, sans-serif;
+		background: #0f1117;
+		color: #e8eaf0;
+		line-height: 1.6;
+	}
+
+	/* WIP Banner */
+	.wip-banner {
+		background: #2a1f00;
+		color: #f5c842;
+		text-align: center;
+		padding: 0.5rem 1rem;
+		font-size: 0.9rem;
+	}
+
+	/* Hero */
+	.hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 5rem 2rem 4rem;
+	}
+	.hero-logo {
+		width: 80px;
+		height: 80px;
+		margin-bottom: 1.5rem;
+	}
+	h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+	h1 span { color: #4f8ef7; }
+	.hero-sub {
+		font-size: 1.2rem;
+		color: #9ca3af;
+		max-width: 540px;
+		margin-bottom: 2rem;
+	}
+	.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+	/* CTAs */
+	.cta-primary, .cta-secondary {
+		display: inline-block;
+		padding: 0.75rem 2rem;
+		border-radius: 6px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1rem;
+		transition: background 0.15s, color 0.15s;
+	}
+	.cta-primary { background: #4f8ef7; color: #fff; }
+	.cta-primary:hover { background: #3a7de8; }
+	.cta-secondary { background: transparent; color: #e8eaf0; border: 1px solid #374151; }
+	.cta-secondary:hover { background: #1c2030; }
+
+	/* Card stack */
+	.stack-wrapper {
+		position: relative;
+		width: 640px;
+		height: 380px;
+	}
+	.expand-btn {
+		position: absolute;
+		bottom: 2rem;
+		right: 0.75rem;
+		z-index: 10;
+		background: rgba(15,17,23,0.75);
+		color: #e8eaf0;
+		border: 1px solid #374151;
+		border-radius: 6px;
+		padding: 0.3rem 0.5rem;
+		font-size: 1rem;
+		cursor: pointer;
+		opacity: 0;
+		transition: opacity 0.2s;
+	}
+	.stack-wrapper:hover .expand-btn { opacity: 1; }
+
+	/* Lightbox */
+	.lightbox {
+		background: rgba(0,0,0,0.9);
+		border: none;
+		max-width: 95vw;
+		max-height: 95vh;
+		padding: 0;
+		border-radius: 10px;
+		overflow: hidden;
+		margin: auto;
+	}
+	.lightbox::backdrop { background: rgba(0,0,0,0.8); }
+	.lightbox-img {
+		display: block;
+		max-width: 90vw;
+		max-height: 90vh;
+		object-fit: contain;
+	}
+	.lightbox-close {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+		background: rgba(15,17,23,0.8);
+		color: #e8eaf0;
+		border: 1px solid #374151;
+		border-radius: 50%;
+		width: 2rem;
+		height: 2rem;
+		font-size: 0.9rem;
+		cursor: pointer;
+		z-index: 1;
+	}
+
+	/* Crop frame corners — removed */
+
+	.stack-hint {
+		text-align: center;
+		color: #4b5563;
+		font-size: 0.85rem;
+		margin-top: 1rem;
+	}
+	.stack-section {
+		padding: 3rem 2rem 5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.card-stack {
+		position: relative;
+		width: 640px;
+		height: 380px;
+		cursor: pointer;
+	}
+	.stack-card {
+		position: absolute;
+		width: 640px;
+		height: 360px;
+		border-radius: 0;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+		transition: transform 0.35s ease, box-shadow 0.35s ease, z-index 0s;
+	}
+	.stack-card.placeholder {
+		background: #1c2030;
+		border: 1px dashed #374151;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #4b5563;
+		font-size: 1rem;
+	}
+	.card-0 { transform: rotate(0deg);              z-index: 4; box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.6); }
+	.card-1 { transform: rotate(-2deg) translate(-6px,  10px); z-index: 3; box-shadow: 0 10px 32px rgba(0,0,0,0.4); }
+	.card-2 { transform: rotate(-4deg) translate(-12px, 18px); z-index: 2; box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+	.card-3 { transform: rotate(-6deg) translate(-18px, 26px); z-index: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+	/* Sections */
+	.section {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 4rem 2rem;
+		text-align: center;
+	}
+	.section-alt {
+		background: #13161f;
+		max-width: 100%;
+	}
+	.section-alt > * { max-width: 900px; margin-left: auto; margin-right: auto; }
+	h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; }
+	h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
+
+	/* Features */
+	.features {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+		text-align: left;
+	}
+	.feature-card {
+		background: #1c2030;
+		border: 1px solid #1f2537;
+		border-radius: 10px;
+		padding: 1.5rem;
+	}
+	.feature-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+	.feature-card p { color: #9ca3af; font-size: 0.95rem; }
+
+	/* Chart types */
+	.chart-types {
+		display: flex;
+		gap: 3rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.chart-group { text-align: left; min-width: 160px; }
+	.chart-group ul { list-style: none; margin-top: 0.75rem; }
+	.chart-group li { padding: 0.25rem 0; color: #9ca3af; font-size: 0.95rem; }
+	.chart-group li::before { content: "✓  "; color: #4f8ef7; }
+	.coming-soon li::before { content: "◦  "; color: #4b5563; }
+	.coming-soon h3 { color: #6b7280; }
+
+	/* Steps */
+	.steps {
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	.step { max-width: 220px; text-align: center; }
+	.step-num {
+		width: 2.5rem; height: 2.5rem;
+		background: #4f8ef7;
+		color: #fff;
+		border-radius: 50%;
+		display: flex; align-items: center; justify-content: center;
+		font-weight: 700; font-size: 1.1rem;
+		margin: 0 auto 0.75rem;
+	}
+	.step p { color: #9ca3af; font-size: 0.95rem; }
+	.step-arrow { color: #374151; font-size: 1.5rem; padding-top: 0.6rem; }
+
+	/* OSS callout */
+	.oss-callout { text-align: center; }
+	.oss-callout p { color: #9ca3af; margin-bottom: 1.5rem; }
+
+	/* Footer */
+	footer {
+		text-align: center;
+		padding: 2rem;
+		color: #4b5563;
+		font-size: 0.85rem;
+		border-top: 1px solid #1f2537;
+	}
+	footer a { color: inherit; text-decoration: none; }
+	footer a:hover { color: #9ca3af; }
+</style>
