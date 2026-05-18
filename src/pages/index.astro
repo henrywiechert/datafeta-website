@@ -12,7 +12,7 @@ const screenshots = [
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<title>DataSlicer — OLAP-in-browser data analysis</title>
+		<title>DataSlicer by datafeta — Data Analysis For Engineers</title>
 		<meta name="description" content="Open-source OLAP-style data analysis in your browser. Connect to ClickHouse, DuckDB, and CSV files." />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -28,8 +28,8 @@ const screenshots = [
 		<!-- Hero -->
 		<section class="hero">
 			<img src="/logo192.png" alt="DataSlicer logo" class="hero-logo" />
-			<h1>Data<span>Slicer</span></h1>
-			<p class="hero-tagline">Data Analysis For Engineers. Efficient Data Exploration (Not Fancy Dashboards).</p>
+			<h1>Data<span>Slicer</span> <span class="brand">by <strong>datafeta</strong></span></h1>
+			<p class="hero-tagline">Explorative Data Analysis For Engineers. (No Fancy Dashboards).</p>
 			<p class="hero-sub">
 				Open-source OLAP-style data analysis in your browser.<br />
 				Connect to ClickHouse, DuckDB, Kaggle, or CSV/Parquet files and explore your data interactively.
@@ -71,6 +71,15 @@ const screenshots = [
 			<button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
 			<img id="lightbox-img" src="" alt="" class="lightbox-img" />
 		</dialog>
+
+		<!-- Polaris callout -->
+		<section class="section polaris-callout">
+			<p>
+				Heard of the <a href="https://graphics.stanford.edu/papers/polaris_extended/" target="_blank" rel="noopener">Polaris Formalism</a>?<br />
+				It's the theoretical foundation of data visualization tools like Tableau&#8482;.<br />
+				DataSlicer implements many of Polaris' core concepts.
+			</p>
+		</section>
 
 		<!-- Features -->
 		<section class="section">
@@ -139,7 +148,7 @@ const screenshots = [
 				<div class="step">
 					<div class="step-num">2</div>
 					<h3>Explore</h3>
-					<p>Drag fields onto axes, apply filters, chart type auto-detect ar manual.</p>
+					<p>Drag fields onto axes, apply filters, chart type auto-detect or manual.</p>
 				</div>
 				<div class="step-arrow">→</div>
 				<div class="step">
@@ -159,7 +168,7 @@ const screenshots = [
 		</section>
 
 		<footer>
-			© 2026 Henry Wiechert ·
+			© 2026 datafeta ·
 			<a href="https://github.com/henrywiechert/data-slicer">GitHub</a> ·
 			<a href="https://github.com/henrywiechert/data-slicer/blob/master/LICENSE">AGPL License</a>
 		</footer>
@@ -245,6 +254,7 @@ const screenshots = [
 	}
 	h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
 	h1 span { color: #4f8ef7; }
+	h1 .brand { font-size: 1.1rem; font-weight: 400; color: #6b7280; vertical-align: middle; }
 	.hero-tagline {
 		font-size: 1rem;
 		font-weight: 600;
@@ -390,6 +400,20 @@ const screenshots = [
 	.section-alt > * { max-width: 900px; margin-left: auto; margin-right: auto; }
 	h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; }
 	h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
+
+	/* Polaris callout */
+	.polaris-callout {
+		border-top: 1px solid #1f2537;
+		border-bottom: 1px solid #1f2537;
+		padding: 2rem;
+	}
+	.polaris-callout p {
+		color: #6b7280;
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+	.polaris-callout a { color: #4f8ef7; text-decoration: none; }
+	.polaris-callout a:hover { text-decoration: underline; }
 
 	/* Features */
 	.features {
