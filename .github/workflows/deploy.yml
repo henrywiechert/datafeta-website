@@ -1,6 +1,7 @@
 name: Deploy
 
 # Builds the website Docker image, pushes to GHCR, and deploys to the VPS.
+# Triggered manually or on a nightly schedule.
 #
 # Required GitHub Secrets (same as app repo):
 #   VPS_HOST      VPS IP or hostname
@@ -11,9 +12,9 @@ name: Deploy
 # The GHCR package must be set to Public so the VPS can pull without auth.
 
 on:
-  push:
-    branches: [master, main]
-  workflow_dispatch:  # also allow manual trigger from GitHub Actions UI
+  workflow_dispatch:  # manual trigger from GitHub Actions UI
+  schedule:
+    - cron: '0 2 * * *'  # nightly at 02:00 UTC
 
 jobs:
   build-and-deploy:
