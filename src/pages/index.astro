@@ -13,7 +13,7 @@ const screenshots = [
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
 		<title>DataSlicer by datafeta — Data Analysis For Engineers</title>
-		<meta name="description" content="Open-source OLAP-style data analysis in your browser. Connect to ClickHouse, DuckDB, and CSV files." />
+		<meta name="description" content="Open-source OLAP-style data analysis in your browser. Connect to ClickHouse, Kaggle, and CSV/Parquet files." />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/logo192.png" />
@@ -32,7 +32,7 @@ const screenshots = [
 			<p class="hero-tagline">Explorative Data Analysis For Engineers -<span class="tagline-sub"> No Fancy BI-Dashboards</span></p>
 			<p class="hero-sub">
 				Open-source OLAP-style data analysis in your browser.<br />
-				Connect to ClickHouse, DuckDB, Kaggle, or CSV/Parquet files and explore your data interactively.
+			Connect to ClickHouse, Kaggle, or CSV/Parquet files and explore your data interactively.
 			</p>
 			<div class="hero-ctas">
 				<a class="cta-primary" href="https://app.datafeta.io">Open the app →</a>
@@ -88,7 +88,7 @@ const screenshots = [
 				<div class="feature-card">
 					<div class="feature-icon">🔌</div>
 					<h3>Connect your data</h3>
-					<p>Works with ClickHouse, DuckDB, Kaggle, CSV and Parquet files. More connectors planned.</p>
+					<p>Works with ClickHouse, Kaggle, CSV and Parquet files. More connectors planned.</p>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon">🧮</div>
@@ -98,7 +98,12 @@ const screenshots = [
 				<div class="feature-card">
 					<div class="feature-icon">⚡</div>
 					<h3>Fast re-queries</h3>
-					<p>Query results are cached in DuckDB running in your browser, so interactive exploration stays snappy.</p>
+					<p>Query results are cached locally using DuckDB WASM in your browser, so interactive exploration stays snappy.</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🚀</div>
+					<h3>Billion-row scale</h3>
+					<p>Adaptive sampling, smart binning, and layered caching let you explore datasets with billions of rows seamlessly.</p>
 				</div>
 				<div class="feature-card">
 					<div class="feature-icon">🔓</div>
@@ -121,7 +126,7 @@ const screenshots = [
 				<li>Filters with interactive cross-filtering</li>
 				<li>Linear regression &amp; density overlays</li>
 				<li>Multi-tab sessions with isolated state</li>
-				<li>Connect to ClickHouse, DuckDB, CSV, Parquet, Kaggle</li>
+				<li>Connect to ClickHouse, CSV, Parquet, Kaggle <span class="soon">more to come</span></li>
 				<li>DuckDB WASM result cache in the browser</li>
 				<li>Self-hostable, AGPL licensed</li>
 			</ul>
@@ -134,7 +139,7 @@ const screenshots = [
 				<div class="step">
 					<div class="step-num">1</div>
 					<h3>Connect</h3>
-					<p>Point DataSlicer at your ClickHouse instance, DuckDB file, or upload a CSV/Parquet.</p>
+					<p>Point DataSlicer at your ClickHouse instance, or upload a CSV/Parquet file.</p>
 				</div>
 				<div class="step-arrow">→</div>
 				<div class="step">
@@ -167,7 +172,7 @@ const screenshots = [
 				<a href="https://react.dev" target="_blank" rel="noopener">React 18</a>
 				<a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener">FastAPI</a>
 				<a href="https://pypika.readthedocs.io" target="_blank" rel="noopener">PyPika</a>
-				<a href="https://duckdb.org" target="_blank" rel="noopener">DuckDB WASM</a>
+				<a href="https://duckdb.org" target="_blank" rel="noopener">DuckDB</a>
 				<a href="https://arrow.apache.org" target="_blank" rel="noopener">Apache Arrow</a>
 			</div>
 		</section>
