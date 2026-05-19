@@ -28,7 +28,10 @@ const screenshots = [
 		<!-- Hero -->
 		<section class="hero">
 			<img src="/logo192.png" alt="DataSlicer logo" class="hero-logo" />
-			<h1>Data<span>Slicer</span><br /><span class="brand">by <strong>datafeta</strong></span></h1>
+			<h1>
+				<span class="product-name">Data<span>Slicer</span></span>
+				<span class="brand">by <strong>datafeta</strong></span>
+			</h1>
 			<p class="hero-tagline">Explorative Data Analysis For Engineers -<span class="tagline-sub"> No Fancy BI-Dashboards</span></p>
 			<p class="hero-sub">
 				Open-source OLAP-style data analysis in your browser.<br />
@@ -262,9 +265,26 @@ const screenshots = [
 		height: 80px;
 		margin-bottom: 1.5rem;
 	}
-	h1 { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; }
+	h1 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.1rem;
+		font-size: 3rem;
+		font-weight: 800;
+		line-height: 1;
+		margin-bottom: 0.5rem;
+	}
 	h1 span { color: #4f8ef7; }
-	h1 .brand { font-size: 1.1rem; font-weight: 400; color: #6b7280; vertical-align: middle; }
+	h1 .product-name {
+		display: inline-block;
+	}
+	h1 .brand {
+		font-size: 1.1rem;
+		font-weight: 400;
+		color: #6b7280;
+		line-height: 1.1;
+	}
 	h1 .divider { font-weight: 200; color: #374151; }
 	.hero-tagline {
 		font-size: 1.25rem;
