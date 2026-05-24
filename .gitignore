@@ -2,3 +2,4 @@ node_modules/
 dist/
 .env
 *.log
+public/.DS_Store
