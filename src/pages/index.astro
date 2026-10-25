@@ -45,6 +45,24 @@ const screenshots = [
 			</div>
 		</section>
 
+		<!-- Self-host install -->
+		<section class="section install" id="install">
+			<h2>Self-host in one line</h2>
+			<p class="install-sub">
+				Run your own server — then all you need is a browser.<br />
+				Requires <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> on macOS or Linux.
+			</p>
+			<div class="install-box">
+				<code id="install-cmd"><span class="install-prompt">$</span> curl -fsSL https://datafeta.io/install.sh | sh</code>
+				<button class="copy-btn" id="copy-btn" type="button" aria-label="Copy install command">Copy</button>
+			</div>
+			<p class="install-note">
+				Then open <strong>http://localhost:8100</strong>. Re-run the command any time to upgrade.<br />
+				Listens on localhost only by default · <a href="/install.sh">read the script</a> before you run it.
+			</p>
+		</section>
+
+
 		<!-- Screenshots card stack -->
 		<section class="stack-section">
 			<div class="stack-wrapper">
@@ -164,23 +182,6 @@ const screenshots = [
 					<p>Results cache locally so subsequent queries are near-instant.</p>
 				</div>
 			</div>
-		</section>
-
-		<!-- Self-host install -->
-		<section class="section install" id="install">
-			<h2>Self-host in one line</h2>
-			<p class="install-sub">
-				Run your own server — then all you need is a browser.<br />
-				Requires <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> on macOS or Linux.
-			</p>
-			<div class="install-box">
-				<code id="install-cmd"><span class="install-prompt">$</span> curl -fsSL https://datafeta.io/install.sh | sh</code>
-				<button class="copy-btn" id="copy-btn" type="button" aria-label="Copy install command">Copy</button>
-			</div>
-			<p class="install-note">
-				Then open <strong>http://localhost:8100</strong>. Re-run the command any time to upgrade.<br />
-				Listens on localhost only by default · <a href="/install.sh">read the script</a> before you run it.
-			</p>
 		</section>
 
 		<!-- Open source callout -->
