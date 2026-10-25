@@ -166,6 +166,23 @@ const screenshots = [
 			</div>
 		</section>
 
+		<!-- Self-host install -->
+		<section class="section install" id="install">
+			<h2>Self-host in one line</h2>
+			<p class="install-sub">
+				Run your own server — then all you need is a browser.<br />
+				Requires <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker</a> on macOS or Linux.
+			</p>
+			<div class="install-box">
+				<code id="install-cmd"><span class="install-prompt">$</span> curl -fsSL https://datafeta.io/install.sh | sh</code>
+				<button class="copy-btn" id="copy-btn" type="button" aria-label="Copy install command">Copy</button>
+			</div>
+			<p class="install-note">
+				Then open <strong>http://localhost:8100</strong>. Re-run the command any time to upgrade.<br />
+				Listens on localhost only by default · <a href="/install.sh">read the script</a> before you run it.
+			</p>
+		</section>
+
 		<!-- Open source callout -->
 		<section class="section oss-callout">
 			<h2>Free &amp; open source</h2>
@@ -216,6 +233,24 @@ const screenshots = [
 			});
 		});
 	}
+
+	// Copy install command
+	const copyBtn = document.getElementById('copy-btn');
+	copyBtn?.addEventListener('click', async () => {
+		const cmd = 'curl -fsSL https://datafeta.io/install.sh | sh';
+		try {
+			await navigator.clipboard.writeText(cmd);
+			copyBtn.textContent = 'Copied ✓';
+		} catch {
+			copyBtn.textContent = 'Press ⌘/Ctrl+C';
+			const range = document.createRange();
+			range.selectNodeContents(document.getElementById('install-cmd')!);
+			const sel = window.getSelection();
+			sel?.removeAllRanges();
+			sel?.addRange(range);
+		}
+		setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+	});
 
 	// Lightbox
 	const expandBtn = document.getElementById('expand-btn');
@@ -539,6 +574,44 @@ const screenshots = [
 	.step-arrow { color: #374151; font-size: 1.5rem; padding-top: 0.6rem; }
 
 	/* OSS callout */
+	/* Install */
+	.install-sub { color: #9ca3af; margin-bottom: 1.5rem; }
+	.install-sub a, .install-note a { color: #4f8ef7; }
+	.install-box {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		max-width: 640px;
+		margin: 0 auto 1.25rem;
+		padding: 0.9rem 1rem 0.9rem 1.25rem;
+		background: #0a0c12;
+		border: 1px solid #2a3350;
+		border-radius: 10px;
+		text-align: left;
+	}
+	.install-box code {
+		font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+		font-size: 0.95rem;
+		color: #e8eaf0;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+	.install-prompt { color: #4f8ef7; user-select: none; margin-right: 0.5rem; }
+	.copy-btn {
+		flex-shrink: 0;
+		padding: 0.4rem 0.9rem;
+		font-size: 0.85rem;
+		color: #e8eaf0;
+		background: #1c2030;
+		border: 1px solid #374151;
+		border-radius: 6px;
+		cursor: pointer;
+	}
+	.copy-btn:hover { background: #262c42; }
+	.install-note { color: #6b7280; font-size: 0.9rem; }
+	.install-note strong { color: #9ca3af; font-weight: 600; }
+
 	.oss-callout { text-align: center; }
 	.oss-callout p { color: #9ca3af; margin-bottom: 1.5rem; }
 
